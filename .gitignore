@@ -1,0 +1,265 @@
+# ============================================================
+
+# 0. Project note
+
+# ============================================================
+
+# GridPolicy-RAG ignores large/raw data, generated parsing artifacts,
+
+# local vector databases, secrets, cache files, and IDE metadata.
+
+# Source code, lightweight metadata, evaluation benchmarks, configs,
+
+# and documentation should remain version-controlled.
+
+# ============================================================
+
+# 1. Python virtual environments and runtime cache
+
+# ============================================================
+
+.venv/
+venv/
+ENV/
+env/
+.python-version
+
+**pycache**/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.cache/
+*.txt
+
+# Jupyter cache
+
+.ipynb_checkpoints/
+
+# ============================================================
+
+# 2. Build, packaging, and dependency artifacts
+
+# ============================================================
+
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# ============================================================
+
+# 3. Environment variables, credentials, and secrets
+
+# ============================================================
+
+.env
+.env.*
+!.env.example
+.secret*
+secrets.toml
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# API keys / provider configs should be stored locally only.
+
+config.local.yaml
+config.local.yml
+config.local.json
+
+# ============================================================
+
+# 4. Raw data: never commit AEMO source documents
+
+# ============================================================
+
+# Raw PDFs and workbooks may be large and should remain local.
+
+data/raw/**
+!data/raw/.gitkeep
+
+# ============================================================
+
+# 5. Processed data: ignore generated parsing artifacts
+
+# ============================================================
+
+# The parser output is reproducible and should not be committed by default.
+
+data/processed/**
+!data/processed/.gitkeep
+
+# Keep lightweight metadata files if you want GitHub readers to see
+
+# what documents were used and how parsing quality was assessed.
+
+!data/processed/document_registry.csv
+!data/processed/parsing_quality_report.csv
+
+# Keep empty processed subfolders if needed.
+
+!data/processed/parsed_json/
+!data/processed/parsed_json/.gitkeep
+!data/processed/tables/
+!data/processed/tables/.gitkeep
+!data/processed/review_samples/
+!data/processed/review_samples/.gitkeep
+
+# Explicitly ignore generated Stage 1 artifacts.
+
+data/processed/parsed_json/**/*.json
+data/processed/tables/**/*.json
+data/processed/review_samples/**/*.md
+data/processed/review_samples/**/*.txt
+data/processed/review_samples/**/*.html
+
+# ============================================================
+
+# 6. Evaluation data
+
+# ============================================================
+
+# Keep curated benchmark datasets, but ignore generated experiment outputs.
+
+!data/evaluation/
+data/evaluation/*
+!data/evaluation/.gitkeep
+!data/evaluation/benchmark_questions.csv
+!data/evaluation/benchmark_questions.jsonl
+!data/evaluation/gold_answers.csv
+!data/evaluation/gold_answers.jsonl
+
+# Generated evaluation outputs
+
+data/evaluation/runs/
+data/evaluation/results/
+data/evaluation/predictions/
+data/evaluation/reports/
+data/evaluation/*.tmp
+data/evaluation/*.log
+
+# ============================================================
+
+# 7. Vector database and local retrieval indexes
+
+# ============================================================
+
+.qdrant/
+qdrant_storage/
+chroma_db/
+faiss_index/
+indexes/
+vector_store/
+bm25_index/
+*.faiss
+*.index
+*.pkl
+*.pickle
+
+# ============================================================
+
+# 8. Model, embedding, and LLM cache files
+
+# ============================================================
+
+models/
+checkpoints/
+embeddings/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.onnx
+*.gguf
+
+# Hugging Face / sentence-transformers cache if created locally
+
+.huggingface/
+hf_cache/
+sentence_transformers_cache/
+
+# ============================================================
+
+# 9. Logs, temporary files, and generated reports
+
+# ============================================================
+
+logs/
+*.log
+tmp/
+temp/
+*.tmp
+*.bak
+*.backup
+
+# Generated reports / exports
+
+reports/generated/
+outputs/
+artifacts/
+
+# ============================================================
+
+# 10. Notebooks: keep notebooks, ignore generated notebook outputs if exported
+
+# ============================================================
+
+notebooks/outputs/
+notebooks/*.html
+notebooks/*.pdf
+
+# Optional: uncomment this if you do not want to commit notebooks at all.
+
+# notebooks/*.ipynb
+
+# ============================================================
+
+# 11. IDE and operating system files
+
+# ============================================================
+
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+
+# ============================================================
+
+# 12. Docker and local service state
+
+# ============================================================
+
+docker/.env
+docker/data/
+docker/volumes/
+*.pid
+
+# ============================================================
+
+# 13. Streamlit local secrets and state
+
+# ============================================================
+
+.streamlit/secrets.toml
+.streamlit/config.local.toml
+
+# ============================================================
+
+# 14. Test and coverage outputs
+
+# ============================================================
+
+coverage.xml
+junit.xml
+test-results/
+pytest-results/
